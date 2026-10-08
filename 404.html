@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RateWire — Real-Time Currency Intelligence API</title>
+<meta name="description" content="Real-time foreign exchange rates, currency conversion, and historical data. Premium SaaS API built for developers, AI agents, and scale. Start free.">
+<meta property="og:title" content="RateWire — Real-Time Currency Intelligence">
+<meta property="og:description" content="Live exchange rates, seamless conversions, and reliable data — delivered instantly. REST API for developers + AI agents.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ratewire.io">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#04040c;--bg2:#0a0a18;--bg3:#12122a;--surface:rgba(20,20,40,0.6);--surface-hover:rgba(30,30,60,0.7);--border:rgba(124,111,255,0.12);--border-strong:rgba(124,111,255,0.32);--text:#F4F4FF;--text-dim:#8b8ba8;--text-faint:#5a5a78;--primary:#7c6fff;--primary-light:#a78bfa;--primary-deep:#5546e8;--accent-blue:#4286f4;--accent-cyan:#38bdf8;--green:#4ade80;--green-soft:rgba(74,222,128,0.16);--red:#f87171;--gold:#fbbf24;--mono:'JetBrains Mono','Fira Code',monospace;--grad:linear-gradient(135deg,#a78bfa 0%,#7c6fff 50%,#4286f4 100%);--grad-soft:linear-gradient(135deg,rgba(167,139,250,0.16),rgba(66,134,244,0.06))}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;background-image:radial-gradient(ellipse 60% 40% at 20% 0%,rgba(124,111,255,0.10) 0%,transparent 60%),radial-gradient(ellipse 50% 30% at 90% 30%,rgba(66,134,244,0.07) 0%,transparent 70%),radial-gradient(ellipse 70% 40% at 50% 100%,rgba(167,139,250,0.06) 0%,transparent 70%);background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(124,111,255,0.4)}
+nav.site-nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:rgba(4,4,12,0.72);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border)}
+.logo{font-size:1.2rem;font-weight:800;letter-spacing:-0.02em}
+.logo .logo-r{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-mid{display:flex;gap:28px}
+.nav-mid a{color:var(--text-dim);font-size:0.88rem;font-weight:500;transition:color 0.18s}
+.nav-mid a:hover{color:var(--text)}
+.nav-actions{display:flex;gap:12px;align-items:center}
+.nav-signin{color:var(--text-dim);font-size:0.88rem;padding:8px 14px;transition:color 0.18s}
+.nav-signin:hover{color:var(--text)}
+.nav-cta{background:var(--grad);color:#fff;padding:9px 18px;border-radius:8px;font-weight:600;font-size:0.88rem;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 18px rgba(124,111,255,0.25)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,111,255,0.4)}
+.hero{position:relative;min-height:92vh;padding:90px 24px 100px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(124,111,255,0.08);border:1px solid rgba(124,111,255,0.25);border-radius:100px;padding:6px 14px;font-size:0.78rem;font-weight:500;color:var(--primary-light);letter-spacing:0.04em;margin-bottom:28px;backdrop-filter:blur(8px)}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+.hero h1{font-size:clamp(2.6rem,6.5vw,5.2rem);font-weight:800;line-height:1.02;letter-spacing:-0.04em;max-width:900px;margin-bottom:24px;background:linear-gradient(135deg,#fff 0%,#fff 50%,#a78bfa 90%,#7c6fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.lede{font-size:clamp(1.05rem,1.8vw,1.25rem);color:var(--text-dim);max-width:640px;margin:0 auto 40px;line-height:1.65;font-weight:400}
+.hero p.lede strong{color:var(--text);font-weight:600}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.btn-primary{background:var(--grad);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:0.95rem;transition:transform 0.15s,box-shadow 0.15s,filter 0.15s;box-shadow:0 6px 22px rgba(124,111,255,0.28),inset 0 1px 0 rgba(255,255,255,0.16);display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,111,255,0.4);filter:brightness(1.1)}
+.btn-secondary{background:rgba(20,20,40,0.5);backdrop-filter:blur(10px);color:var(--text);padding:14px 28px;border-radius:10px;font-weight:600;font-size:0.95rem;border:1px solid var(--border-strong);transition:border-color 0.18s,transform 0.15s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--primary);transform:translateY(-2px)}
+.floating-bars{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:0.85}
+.rate-bar{position:absolute;display:inline-flex;align-items:center;gap:12px;background:rgba(20,20,40,0.6);backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:100px;padding:10px 18px;font-family:var(--mono);font-size:0.82rem;box-shadow:0 8px 24px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.05);white-space:nowrap}
+.rate-bar .pair{color:var(--text);font-weight:600}
+.rate-bar .price{color:var(--text-dim)}
+.rate-bar .arrow{font-weight:700}
+.rate-bar .arrow.up{color:var(--green)}
+.rate-bar .arrow.dn{color:var(--red)}
+.rate-bar.b1{top:14%;left:-5%;animation:slide1 22s infinite linear}
+.rate-bar.b2{top:28%;right:-10%;animation:slide2 26s infinite linear}
+.rate-bar.b3{bottom:22%;left:-8%;animation:slide1 30s infinite linear}
+.rate-bar.b4{bottom:14%;right:-5%;animation:slide2 24s infinite linear}
+@keyframes slide1{0%{transform:translateX(0)}100%{transform:translateX(120vw)}}
+@keyframes slide2{0%{transform:translateX(0)}100%{transform:translateX(-120vw)}}
+.code-demo-wrap{max-width:800px;margin:0 auto;position:relative}
+.code-demo{background:rgba(10,10,24,0.7);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--border-strong);border-radius:16px;padding:24px 28px;text-align:left;box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 80px rgba(124,111,255,0.08),inset 0 1px 0 rgba(255,255,255,0.06);position:relative}
+.code-demo::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--primary-light),transparent)}
+.code-traffic{display:flex;gap:7px;margin-bottom:14px}
+.code-traffic span{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,0.16)}
+.code-traffic span:nth-child(1){background:#ff5f57}
+.code-traffic span:nth-child(2){background:#febc2e}
+.code-traffic span:nth-child(3){background:#28c840}
+.code-demo pre{font-family:var(--mono);font-size:0.83rem;line-height:1.75;overflow-x:auto;color:#d4d4f0}
+.c-gray{color:#5a5a78}.c-green{color:var(--green)}.c-blue{color:var(--accent-cyan)}.c-yellow{color:var(--gold)}.c-purple{color:var(--primary-light)}.c-pink{color:#f472b6}
+.stats-bar{background:rgba(10,10,24,0.4);backdrop-filter:blur(8px);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 24px}
+.stats-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:28px}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;line-height:1;letter-spacing:-0.02em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:0.78rem;color:var(--text-dim);margin-top:7px;letter-spacing:0.06em;text-transform:uppercase}
+section{padding:100px 24px;position:relative}
+.section-label{text-align:center;font-size:0.74rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--primary-light);margin-bottom:14px}
+.section-title{text-align:center;font-size:clamp(2rem,4.2vw,3.2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;max-width:760px;margin:0 auto 18px;background:linear-gradient(135deg,#fff 0%,#d4d4f0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-title .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-sub{text-align:center;color:var(--text-dim);font-size:1.05rem;max-width:580px;margin:0 auto 64px;line-height:1.7}
+.container{max-width:1100px;margin:0 auto}
+.showcase-section{background:linear-gradient(180deg,transparent,rgba(124,111,255,0.03),transparent)}
+.showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto}
+@media (max-width:800px){.showcase-grid{grid-template-columns:1fr}}
+.glass-card{background:rgba(20,20,40,0.45);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--border-strong);border-radius:18px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.06);position:relative;overflow:hidden}
+.glass-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary-light),transparent);opacity:0.4}
+.glass-card h4{font-size:0.78rem;font-weight:600;color:var(--text-dim);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px}
+.mini-chart-card .chart-line{height:90px;position:relative;margin:14px 0 18px}
+.chart-line svg{width:100%;height:100%}
+.chart-line .line{fill:none;stroke:url(#lineGrad);stroke-width:2.4;filter:drop-shadow(0 0 6px rgba(167,139,250,0.5))}
+.chart-line .area{fill:url(#areaGrad);opacity:0.5}
+.chart-stats{display:flex;justify-content:space-between;align-items:baseline}
+.chart-pair{font-family:var(--mono);font-weight:700;font-size:1.05rem}
+.chart-price{font-family:var(--mono);font-size:0.95rem;color:var(--text)}
+.chart-delta{font-family:var(--mono);font-size:0.82rem;color:var(--green);margin-left:8px}
+.convert-card .convert-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.convert-card .convert-row:last-child{border:none}
+.convert-side{display:flex;align-items:center;gap:10px}
+.convert-flag{width:28px;height:28px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;color:var(--primary-light);font-family:var(--mono)}
+.convert-amt{font-family:var(--mono);font-size:1.1rem;font-weight:600}
+.convert-arrow{color:var(--text-dim);font-size:1.2rem;padding:8px 0;text-align:center}
+.features-section{padding-top:60px}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.feature-card{background:rgba(20,20,40,0.35);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:16px;padding:30px 26px;transition:border-color 0.2s,transform 0.2s,background 0.2s;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary-light),transparent);opacity:0;transition:opacity 0.3s}
+.feature-card:hover{border-color:var(--border-strong);transform:translateY(-3px);background:rgba(20,20,40,0.55)}
+.feature-card:hover::before{opacity:0.6}
+.feature-icon{width:48px;height:48px;border-radius:12px;background:var(--grad-soft);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px}
+.feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:var(--text);letter-spacing:-0.01em}
+.feature-card p{color:var(--text-dim);font-size:0.9rem;line-height:1.65}
+.endpoints-section{background:linear-gradient(180deg,transparent,rgba(66,134,244,0.03),transparent)}
+.endpoints-base{text-align:center;margin-bottom:32px;font-size:0.95rem;color:var(--text-dim)}
+.endpoints-base code{color:var(--primary-light);background:rgba(124,111,255,0.1);border:1px solid var(--border-strong);padding:5px 12px;border-radius:8px;font-family:var(--mono);font-size:0.9rem}
+.endpoints-list{display:grid;gap:12px;max-width:900px;margin:0 auto}
+.endpoint{background:rgba(20,20,40,0.4);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;padding:18px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;transition:border-color 0.18s,transform 0.18s}
+.endpoint:hover{border-color:var(--border-strong);transform:translateX(4px)}
+.method{background:rgba(124,111,255,0.18);color:var(--primary-light);padding:5px 11px;border-radius:6px;font-family:var(--mono);font-size:0.74rem;font-weight:700;min-width:50px;text-align:center;letter-spacing:0.04em}
+.endpoint-path{font-family:var(--mono);color:var(--accent-cyan);font-size:0.92rem}
+.endpoint-desc{color:var(--text-dim);font-size:0.86rem;margin-left:auto}
+.agents-section{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.agents-inner{max-width:920px;margin:0 auto}
+.agent-step{display:flex;gap:18px;margin:28px 0;align-items:flex-start}
+.step-num{background:var(--grad);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.86rem;flex-shrink:0;box-shadow:0 4px 12px rgba(124,111,255,0.35)}
+.step-body{flex:1}
+.step-body strong{font-size:1rem;font-weight:700;color:var(--text)}
+.agent-code{background:rgba(4,4,12,0.6);backdrop-filter:blur(20px);border:1px solid var(--border-strong);border-radius:12px;padding:20px 24px;margin-top:12px;overflow-x:auto;box-shadow:0 12px 30px rgba(0,0,0,0.35)}
+.agent-code pre{font-family:var(--mono);font-size:0.84rem;line-height:1.7;color:#d4d4f0}
+.pricing-section{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1200px;margin:0 auto}
+.plan{background:rgba(20,20,40,0.4);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:18px;padding:32px 26px;transition:transform 0.2s,border-color 0.2s;position:relative}
+.plan:hover{transform:translateY(-4px);border-color:var(--border-strong)}
+.plan.popular{border-color:var(--primary);background:linear-gradient(180deg,rgba(124,111,255,0.08),rgba(20,20,40,0.4));box-shadow:0 0 40px rgba(124,111,255,0.15)}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;white-space:nowrap;box-shadow:0 4px 16px rgba(124,111,255,0.4)}
+.plan-name{font-size:0.78rem;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px}
+.plan-price{font-size:2.6rem;font-weight:800;line-height:1;letter-spacing:-0.03em}
+.plan-price span{font-size:0.95rem;font-weight:400;color:var(--text-dim);margin-left:4px}
+.plan-desc{color:var(--text-dim);font-size:0.82rem;margin-top:8px;margin-bottom:24px}
+.plan-features{list-style:none;margin-bottom:28px}
+.plan-features li{color:var(--text-dim);font-size:0.84rem;padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center}
+.plan-features li:last-child{border:none}
+.plan-features li::before{content:'\u2713';color:var(--green);font-weight:700;flex-shrink:0}
+.btn-plan{display:block;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:0.88rem;background:rgba(20,20,40,0.6);border:1px solid var(--border-strong);color:var(--text);transition:all 0.18s}
+.btn-plan:hover{background:var(--primary);border-color:var(--primary);transform:translateY(-1px)}
+.plan.popular .btn-plan{background:var(--grad);border:1px solid var(--primary);box-shadow:0 6px 20px rgba(124,111,255,0.3)}
+.plan.popular .btn-plan:hover{filter:brightness(1.1)}
+.faq-section{background:var(--bg)}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:rgba(20,20,40,0.4);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.18s}
+.faq-item[open]{border-color:var(--border-strong)}
+.faq-item summary{list-style:none;cursor:pointer;padding:22px 26px;font-weight:600;font-size:0.98rem;display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--text)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:1.4rem;color:var(--primary-light);transition:transform 0.2s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-content{padding:0 26px 22px;font-size:0.9rem;color:var(--text-dim);line-height:1.7}
+.final-cta-section{padding:100px 24px;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(124,111,255,0.08),transparent 70%);text-align:center}
+.final-cta-box{max-width:680px;margin:0 auto}
+.final-cta-box h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;background:linear-gradient(135deg,#fff,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.final-cta-box p{color:var(--text-dim);margin-bottom:36px;font-size:1.05rem;line-height:1.7}
+.final-cta-perks{display:flex;justify-content:center;gap:24px;margin-top:28px;flex-wrap:wrap}
+.perk{font-size:0.82rem;color:var(--text-dim);display:flex;align-items:center;gap:6px}
+.perk::before{content:'\u2713';color:var(--green);font-weight:700}
+.disclaimer-band{background:rgba(4,4,12,0.6);border-top:1px solid var(--border);padding:28px 24px;font-size:0.78rem;color:var(--text-dim);line-height:1.7;text-align:center}
+.disclaimer-band .container{max-width:880px}
+.disclaimer-label{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--primary-light);margin-bottom:10px;font-weight:700}
+.disclaimer-entity{font-size:0.72rem;opacity:0.7;margin-top:10px}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 24px 30px}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media (max-width:800px){.footer-grid{grid-template-columns:1fr 1fr;gap:30px}}
+.footer-logo{font-size:1.15rem;font-weight:800;margin-bottom:12px}
+.footer-logo .logo-r{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-brand p{font-size:0.82rem;color:var(--text-dim);line-height:1.65;max-width:280px}
+.footer-col h5{font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--primary-light);font-weight:700;margin-bottom:14px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col a{color:var(--text-dim);font-size:0.85rem;transition:color 0.18s}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{max-width:1100px;margin:0 auto;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-copy{font-size:0.78rem;color:var(--text-faint)}
+.footer-status{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-dim)}
+.footer-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+@media (max-width:700px){nav.site-nav{padding:14px 18px}.nav-mid{display:none}.nav-signin{display:none}.hero{padding:70px 20px 80px}section{padding:60px 20px}.floating-bars{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a78bfa"/><stop offset="50%" stop-color="#7c6fff"/><stop offset="100%" stop-color="#4286f4"/></linearGradient><linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7c6fff" stop-opacity="0.5"/><stop offset="100%" stop-color="#7c6fff" stop-opacity="0"/></linearGradient></defs></svg>
+<nav class="site-nav">
+  <div class="logo"><span class="logo-r">Rate</span>Wire</div>
+  <div class="nav-mid"><a href="#features">Features</a><a href="#endpoints">API</a><a href="#agents">Agents</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+  <div class="nav-actions"><a href="/dashboard" class="nav-signin">Sign in</a><a href="#pricing" class="nav-cta">Get API Key →</a></div>
+</nav>
+<section class="hero">
+  <div class="floating-bars" aria-hidden="true">
+    <div class="rate-bar b1"><span class="pair">USD/EUR</span> <span class="price">0.9234</span> <span class="arrow up">↑</span></div>
+    <div class="rate-bar b2"><span class="pair">GBP/JPY</span> <span class="price">189.42</span> <span class="arrow up">↑</span></div>
+    <div class="rate-bar b3"><span class="pair">EUR/CHF</span> <span class="price">0.9587</span> <span class="arrow dn">↓</span></div>
+    <div class="rate-bar b4"><span class="pair">AUD/CAD</span> <span class="price">0.9072</span> <span class="arrow up">↑</span></div>
+  </div>
+  <div class="hero-eyebrow">Live · 25+ currencies · &lt;50ms response</div>
+  <h1>Real-time currency intelligence.<br>Built for scale.</h1>
+  <p class="lede">Live exchange rates, seamless conversions, and reliable data — <strong>delivered instantly.</strong> A premium REST API for developers, AI agents, and production fintech.</p>
+  <div class="hero-actions">
+    <a href="#pricing" class="btn-primary">Get API key — start free</a>
+    <a href="#endpoints" class="btn-secondary">View documentation</a>
+  </div>
+  <div class="code-demo-wrap">
+    <div class="code-demo">
+      <div class="code-traffic"><span></span><span></span><span></span></div>
+      <pre><span class="c-gray"># Get live rates in one line</span>
+<span class="c-green">curl</span> <span class="c-yellow">-H</span> <span class="c-blue">"Authorization: Bearer YOUR_API_KEY"</span> \
+  https://api.ratewire.io/<span class="c-purple">v1/rates</span>
+<span class="c-gray"># Response — 25+ pairs, &lt;50ms</span>
+{
+  <span class="c-blue">"base"</span>: <span class="c-green">"USD"</span>,
+  <span class="c-blue">"rates"</span>: { <span class="c-green">"EUR"</span>: 0.9234, <span class="c-green">"GBP"</span>: 0.7912, <span class="c-green">"JPY"</span>: 149.50<span class="c-gray">, ...</span> },
+  <span class="c-blue">"timestamp"</span>: <span class="c-green">"2026-04-30T14:32:00Z"</span>
+}</pre>
+    </div>
+  </div>
+</section>
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Currency Pairs</div></div>
+    <div class="stat"><div class="stat-num">99.9%</div><div class="stat-label">Uptime SLA</div></div>
+    <div class="stat"><div class="stat-num">&lt;50ms</div><div class="stat-label">Response Time</div></div>
+    <div class="stat"><div class="stat-num">365d</div><div class="stat-label">Historical Data</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">REST Endpoints</div></div>
+  </div>
+</div>
+<section class="showcase-section">
+  <div class="container">
+    <p class="section-label">See it in motion</p>
+    <h2 class="section-title">A <span class="grad">live</span> intelligence layer for your stack.</h2>
+    <p class="section-sub">Designed to feel like a financial product, not a static endpoint.</p>
+    <div class="showcase-grid">
+      <div class="glass-card mini-chart-card">
+        <h4>USD / EUR · 24h</h4>
+        <div class="chart-line"><svg viewBox="0 0 320 90" preserveAspectRatio="none"><path class="area" d="M 0 60 L 30 52 L 60 58 L 90 44 L 120 48 L 150 36 L 180 40 L 210 28 L 240 22 L 270 30 L 300 18 L 320 12 L 320 90 L 0 90 Z"/><path class="line" d="M 0 60 L 30 52 L 60 58 L 90 44 L 120 48 L 150 36 L 180 40 L 210 28 L 240 22 L 270 30 L 300 18 L 320 12"/></svg></div>
+        <div class="chart-stats"><span class="chart-pair">USD / EUR</span><div><span class="chart-price">0.9234</span><span class="chart-delta">+0.42%</span></div></div>
+      </div>
+      <div class="glass-card convert-card">
+        <h4>Live conversion</h4>
+        <div class="convert-row"><div class="convert-side"><div class="convert-flag">USD</div><span class="convert-amt">1,000.00</span></div></div>
+        <div class="convert-arrow">↓</div>
+        <div class="convert-row"><div class="convert-side"><div class="convert-flag">EUR</div><span class="convert-amt">923.40</span></div></div>
+        <div class="convert-row"><div class="convert-side"><div class="convert-flag">GBP</div><span class="convert-amt">791.20</span></div></div>
+        <div class="convert-row"><div class="convert-side"><div class="convert-flag">JPY</div><span class="convert-amt">149,500</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="features-section" id="features">
+  <div class="container">
+    <p class="section-label">Everything you need</p>
+    <h2 class="section-title">Six primitives. <span class="grad">One clean API.</span></h2>
+    <p class="section-sub">Designed to feel familiar to anyone who has built on Stripe, Linear, or Vercel.</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">⚡</div><h3>Real-time rates</h3><p>Live exchange rates for 25+ currencies updated continuously. Sub-50ms response on every region.</p></div>
+      <div class="feature-card"><div class="feature-icon">🔄</div><h3>Currency conversion</h3><p>Convert any amount between any supported pair in a single GET. Returns both rate and converted total.</p></div>
+      <div class="feature-card"><div class="feature-icon">📈</div><h3>Historical data</h3><p>Up to 365 days of daily exchange rate history for trend analysis, charting, and backtesting.</p></div>
+      <div class="feature-card"><div class="feature-icon">🔑</div><h3>Simple auth</h3><p>Bearer token authentication. Pass your API key in the Authorization header or as a query parameter.</p></div>
+      <div class="feature-card"><div class="feature-icon">🚦</div><h3>Rate limiting</h3><p>Per-plan request limits keep your app safe and predictable. Upgrade in one click as you scale.</p></div>
+      <div class="feature-card"><div class="feature-icon">🤖</div><h3>Agent ready</h3><p>Designed for AI agents and LLM tools. First-class examples for Claude, GPT, LangChain, n8n, Make.</p></div>
+    </div>
+  </div>
+</section>
+<section class="endpoints-section" id="endpoints">
+  <div class="container">
+    <p class="section-label">REST API</p>
+    <h2 class="section-title">Four endpoints. <span class="grad">Everything covered.</span></h2>
+    <p class="endpoints-base">Base URL: <code>https://api.ratewire.io</code></p>
+    <div class="endpoints-list">
+      <div class="endpoint"><span class="method">GET</span><span class="endpoint-path">/v1/rates</span><span class="endpoint-desc">Get all current exchange rates (base: USD)</span></div>
+      <div class="endpoint"><span class="method">GET</span><span class="endpoint-path">/v1/convert?amount=100&amp;from=USD&amp;to=EUR</span><span class="endpoint-desc">Convert between any two currencies</span></div>
+      <div class="endpoint"><span class="method">GET</span><span class="endpoint-path">/v1/currencies</span><span class="endpoint-desc">List all 25+ supported currencies</span></div>
+      <div class="endpoint"><span class="method">GET</span><span class="endpoint-path">/v1/historical?currency=EUR&amp;days=30</span><span class="endpoint-desc">Historical rates (up to 365 days)</span></div>
+    </div>
+  </div>
+</section>
+<section class="agents-section" id="agents">
+  <div class="container agents-inner">
+    <p class="section-label">For AI agents &amp; automation</p>
+    <h2 class="section-title" style="text-align:left">Plug into <span class="grad">Claude, GPT, LangChain</span> in minutes.</h2>
+    <p class="section-sub" style="text-align:left">First-class examples for the platforms developers actually use.</p>
+    <div class="agent-step"><div class="step-num">1</div><div class="step-body"><strong>Claude / Anthropic — tool function</strong>
+      <div class="agent-code"><pre><span class="c-purple">const</span> <span class="c-blue">getRates</span> = <span class="c-purple">async</span> () =&gt; {
+  <span class="c-purple">const</span> res = <span class="c-purple">await</span> fetch(<span class="c-green">'https://api.ratewire.io/v1/rates'</span>, {
+    headers: { <span class="c-green">'Authorization'</span>: <span class="c-green">&#96;Bearer &#36;{YOUR_API_KEY}&#96;</span> }
+  });
+  <span class="c-purple">return</span> res.json();
+};</pre></div></div></div>
+    <div class="agent-step"><div class="step-num">2</div><div class="step-body"><strong>Python / LangChain — function tool</strong>
+      <div class="agent-code"><pre><span class="c-purple">import</span> requests
+<span class="c-purple">def</span> <span class="c-blue">convert_currency</span>(amount, from_curr, to_curr):
+    url = <span class="c-green">"https://api.ratewire.io/v1/convert"</span>
+    params = {<span class="c-green">"amount"</span>: amount, <span class="c-green">"from"</span>: from_curr, <span class="c-green">"to"</span>: to_curr}
+    headers = {<span class="c-green">"Authorization"</span>: <span class="c-green">f"Bearer {YOUR_API_KEY}"</span>}
+    <span class="c-purple">return</span> requests.get(url, params=params, headers=headers).json()</pre></div></div></div>
+    <div class="agent-step"><div class="step-num">3</div><div class="step-body"><strong>n8n / Make / Zapier — HTTP Request node</strong>
+      <div class="agent-code"><pre>URL:     https://api.ratewire.io/v1/convert
+Method:  GET
+Header:  Authorization: Bearer YOUR_API_KEY
+Query:   amount, from, to</pre></div></div></div>
+  </div>
+</section>
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Start free. <span class="grad">Scale predictably.</span></h2>
+    <p class="section-sub">No tiers locked behind sales calls. Cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="plan"><div class="plan-name">Free</div><div class="plan-price">$0<span>/mo</span></div><div class="plan-desc">Side projects + testing</div><ul class="plan-features"><li>1,000 requests / month</li><li>10 requests / minute</li><li>All 25+ currencies</li><li>All 4 endpoints</li><li>No credit card required</li></ul><a href="mailto:vg@ratewire.app?subject=Free API Key Request" class="btn-plan">Get free key</a></div>
+      <div class="plan popular"><div class="popular-badge">Most popular</div><div class="plan-name">Starter</div><div class="plan-price">$49<span>/mo</span></div><div class="plan-desc">Small apps + side projects</div><ul class="plan-features"><li>10,000 requests / month</li><li>100 requests / minute</li><li>All 25+ currencies</li><li>All 4 endpoints</li><li>Email support</li></ul><a href="https://buy.stripe.com/aFa7sL7k0gUmbGh1rw7Vm06" class="btn-plan">Subscribe →</a></div>
+      <div class="plan"><div class="plan-name">Growth</div><div class="plan-price">$199<span>/mo</span></div><div class="plan-desc">Production apps + startups</div><ul class="plan-features"><li>100,000 requests / month</li><li>500 requests / minute</li><li>All 25+ currencies</li><li>All 4 endpoints</li><li>Priority support</li></ul><a href="https://buy.stripe.com/28E3cv1ZG9rU9y98TY7Vm07" class="btn-plan">Subscribe →</a></div>
+      <div class="plan"><div class="plan-name">Scale</div><div class="plan-price">$799<span>/mo</span></div><div class="plan-desc">High-volume production</div><ul class="plan-features"><li>1M requests / month</li><li>2,000 requests / minute</li><li>All 25+ currencies</li><li>All 4 endpoints</li><li>Dedicated support</li></ul><a href="https://buy.stripe.com/7sYeVd0VC47A6lXb267Vm08" class="btn-plan">Subscribe →</a></div>
+      <div class="plan"><div class="plan-name">Enterprise</div><div class="plan-price" style="font-size:1.8rem">Custom</div><div class="plan-desc">Unlimited scale + SLA</div><ul class="plan-features"><li>Unlimited requests</li><li>Unlimited rate limit</li><li>Custom integrations</li><li>99.9% SLA guarantee</li><li>Dedicated account manager</li></ul><a href="mailto:vg@ratewire.app?subject=Enterprise Plan Inquiry" class="btn-plan">Contact us</a></div>
+    </div>
+  </div>
+</section>
+<section class="faq-section" id="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Questions developers <span class="grad">ask first.</span></h2>
+    <p class="section-sub">If something isn't here, email vg@ratewire.app — we usually answer within hours.</p>
+    <div class="faq-list">
+      <details class="faq-item"><summary>What's the rate source and update frequency?</summary><div class="faq-content">RateWire ingests from interbank-grade FX feeds and publishes updated rates continuously across all 25+ currencies. Response latency targets sub-50ms from any region.</div></details>
+      <details class="faq-item"><summary>Can I use RateWire in a production AI agent?</summary><div class="faq-content">Yes — that's a core use case. The API is designed for stateless, deterministic calls that work cleanly inside LLM tool-calling loops. Examples in the Agents section above cover Claude, GPT, LangChain, and n8n.</div></details>
+      <details class="faq-item"><summary>How does authentication work?</summary><div class="faq-content">Bearer token in the <code>Authorization</code> header (or as a query parameter for low-trust environments). Each plan ships its own key. Rotate from your dashboard in two clicks.</div></details>
+      <details class="faq-item"><summary>What happens if I hit my rate limit?</summary><div class="faq-content">You receive a <code>429 Too Many Requests</code> with a <code>Retry-After</code> header. Upgrade in one click — the new limits apply immediately.</div></details>
+      <details class="faq-item"><summary>Do you support historical data?</summary><div class="faq-content">Yes. Up to 365 days of daily exchange rates per currency via the <code>/v1/historical</code> endpoint. Useful for trend analysis, backtests, and reporting.</div></details>
+      <details class="faq-item"><summary>Is there an SLA?</summary><div class="faq-content">99.9% uptime SLA on Growth and Scale tiers. Enterprise tier offers custom guarantees including credit-back terms.</div></details>
+      <details class="faq-item"><summary>Can I cancel anytime?</summary><div class="faq-content">Yes. No contracts. Cancel from the dashboard. Your subscription continues to the end of the current billing cycle, then stops.</div></details>
+      <details class="faq-item"><summary>Are crypto pairs supported?</summary><div class="faq-content">Not yet — RateWire focuses on traditional currency pairs (USD, EUR, GBP, JPY, AUD, CAD, CHF, CNH, etc.). Crypto support is on the roadmap.</div></details>
+    </div>
+  </div>
+</section>
+<section class="final-cta-section">
+  <div class="final-cta-box">
+    <p class="section-label">Start now</p>
+    <h2>Ship currency intelligence today.</h2>
+    <p>Free key in 30 seconds. Full API in 60. Production-ready support when you need it.</p>
+    <a href="#pricing" class="btn-primary" style="padding: 16px 32px; font-size: 1rem;">Get your API key →</a>
+    <div class="final-cta-perks"><div class="perk">No card required</div><div class="perk">Instant key</div><div class="perk">Cancel anytime</div><div class="perk">99.9% uptime</div></div>
+  </div>
+</section>
+<aside class="disclaimer-band" role="note">
+  <div class="container">
+    <p class="disclaimer-label">Important disclosure</p>
+    <p>RateWire is a developer API for currency exchange rate data, provided by V&amp;DG Management LLC / Vibe Technologies LLC. The data is delivered as-is for informational, educational, and decision-support purposes. RateWire does not constitute investment, financial, legal, tax, or compliance advice and is not a regulated financial service. Customers are responsible for validating data before relying on it for production decisions.</p>
+    <p class="disclaimer-entity">V&amp;DG Management LLC · RateWire is a product of Vibe Technologies LLC.</p>
+  </div>
+</aside>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="footer-logo"><span class="logo-r">Rate</span>Wire</div><p>Real-time currency intelligence and conversion API. Built by Vibe Technologies LLC for developers and AI agents.</p></div>
+    <div class="footer-col"><h5>Product</h5><ul><li><a href="#features">Features</a></li><li><a href="#endpoints">API endpoints</a></li><li><a href="#agents">Agent integrations</a></li><li><a href="#pricing">Pricing</a></li><li><a href="/dashboard">Dashboard</a></li></ul></div>
+    <div class="footer-col"><h5>Developers</h5><ul><li><a href="/docs">Documentation</a></li><li><a href="/changelog">Changelog</a></li><li><a href="/status">API status</a></li><li><a href="/sdks">SDKs</a></li><li><a href="https://github.com/vibe-technologies" target="_blank" rel="noopener">GitHub</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="mailto:vg@ratewire.app">Contact</a></li><li><a href="/affiliates">Partners</a></li></ul></div>
+    <div class="footer-col"><h5>Legal</h5><ul><li><a href="/privacy">Privacy</a></li><li><a href="/terms">Terms</a></li><li><a href="/dpa">DPA</a></li><li><a href="/security">Security</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 V&amp;DG Management LLC · A Vibe Technologies LLC product</div><div class="footer-status">All systems operational</div></div>
+</footer>
+</body>
+</html>
