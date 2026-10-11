@@ -2,27 +2,97 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RateWire | Under construction</title>
-<meta name="description" content="RateWire: real-time currency intelligence API. Under construction.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page not found · RateWire | Real-time currency intelligence</title>
+<meta name="description" content="A real-time FX data API for developers and AI agents. Clean rates, clear sources and predictable latency, rebuilt from the ground up.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://ratewire.io/">
+<meta name="theme-color" content="#07090A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RateWire">
+<meta property="og:title" content="RateWire | Real-time currency intelligence">
+<meta property="og:description" content="A real-time FX data API for developers and AI agents. Clean rates, clear sources and predictable latency, rebuilt from the ground up.">
+<meta property="og:url" content="https://ratewire.io/">
+<meta property="og:image" content="https://ratewire.io/img/og-image.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gelasio:wght@600&family=Inter:wght@400;500;700&display=swap">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
-*{box-sizing:border-box;margin:0}body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 20%,#0f3a2e,#06191a 70%);color:#f2f7f0;font-family:Inter,system-ui,sans-serif;text-align:center;padding:2rem}
-.e{width:88px;height:88px;margin:0 auto 1.4rem;display:block}
-.k{letter-spacing:.3em;font-size:.75rem;color:#b6f24a;text-transform:uppercase}h1{font-family:Gelasio,Georgia,serif;font-size:clamp(2.2rem,6vw,3.6rem);margin:1rem 0}
-p{max-width:34rem;margin:0 auto 1.4rem;line-height:1.6;color:#cfe0d8}.b{display:inline-block;margin-top:.5rem;padding:.4rem 1rem;border:1px solid #0fb57c66;border-radius:99px;font-size:.85rem;color:#b6f24a}
-footer{margin-top:2.5rem;font-size:.75rem;color:#7fa89a}
+
+:root{--bg:#07090A;--ink:#F2F7EC;--muted:#B5C0AE;--acc:#C6F135;--acc2:#7FD13B;--disp:'Sora',Georgia,serif;--body:'Instrument Sans',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--wrap:1240px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}img{display:block;max-width:100%;height:auto}
+.wrap{width:min(100%,var(--wrap));margin:0 auto;padding:0 clamp(22px,4vw,48px)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:9;background:var(--acc);color:var(--bg);padding:8px 14px;border-radius:8px}
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;isolation:isolate;overflow:hidden}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%}
+.hero picture img{object-fit:cover;object-position:60% 50%;z-index:-2;animation:drift 28s ease-in-out infinite alternate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,9,10,.96) 0%,rgba(7,9,10,.86) 34%,rgba(7,9,10,.35) 66%,rgba(7,9,10,.08) 100%),linear-gradient(0deg,rgba(7,9,10,.92) 0%,rgba(7,9,10,0) 32%),linear-gradient(180deg,rgba(7,9,10,.6) 0%,rgba(7,9,10,0) 22%)}
+@keyframes drift{from{transform:scale(1.02)}to{transform:scale(1.08) translateX(-1%)}}
+@media (prefers-reduced-motion:reduce){.hero picture img{animation:none}}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:28px;padding-bottom:28px}
+.brand img{height:clamp(46px,4.4vw,64px);width:auto}
+.hcontact{font-size:.92rem;font-weight:500;letter-spacing:.02em;text-decoration:none;padding:9px 0;border-bottom:1px solid var(--acc)}
+.hcontact:hover{color:var(--acc)}
+main{flex:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:center;gap:clamp(28px,5vw,80px);padding-top:clamp(24px,5vh,60px);padding-bottom:clamp(56px,10vh,120px)}
+.kicker{display:inline-flex;align-items:center;gap:14px;margin:0 0 26px;font:600 .78rem/1.4 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--acc)}
+.kicker::before{content:"";width:44px;height:1px;background:currentColor}
+h1{font-family:var(--disp);font-weight:600;font-size:clamp(2.6rem,5.6vw,5.2rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 28px;max-width:13.5em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--acc)}
+.lead{font-size:clamp(1.06rem,1.35vw,1.26rem);line-height:1.7;color:var(--muted);max-width:34em;margin:0 0 38px}
+.notify{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:#C6F135;color:#07090A;font-weight:600;font-size:.98rem;text-decoration:none;padding:15px 26px;border-radius:999px;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px -10px #C6F135}
+.btn span{font-size:1.2rem;line-height:1}
+.line{font-size:.95rem;color:var(--muted)}.line a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--acc)}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:30px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 var(--acc);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(198,241,53,.6)}70%{box-shadow:0 0 0 12px rgba(198,241,53,0)}100%{box-shadow:0 0 0 0 rgba(198,241,53,0)}}
+.seal{justify-self:end;width:min(100%,460px);filter:drop-shadow(0 30px 60px rgba(0,0,0,0.55))}
+footer{border-top:1px solid rgba(198,241,53,.22);background:var(--bg)}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;padding-top:30px;padding-bottom:34px;font-size:.84rem;color:var(--muted)}
+footer .fl{display:flex;align-items:center;gap:16px}footer .fl img{height:40px;width:auto}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}footer nav a{text-decoration:none}footer nav a:hover{color:var(--acc)}
+footer .credit a{text-decoration:none;border-bottom:1px dotted currentColor}
+@media (max-width:900px){main{grid-template-columns:1fr}.seal{justify-self:start;width:min(62vw,300px);order:-1}.hero::before{background:linear-gradient(180deg,rgba(7,9,10,.55) 0%,rgba(7,9,10,.82) 40%,rgba(7,9,10,.96) 100%)}}
 </style>
 </head>
-<body><main>
-<img class="e" src="/brand/ratewire-emblem.svg" alt="RateWire">
-<div class="k">RateWire</div>
-<h1>Under construction</h1>
-<p>We're rebuilding RateWire, a real-time currency intelligence API for developers and AI agents. Check back soon.</p>
-<span class="b">Coming soon</span>
-<footer>&copy; 2026 Vibe Technologies</footer>
-</main></body></html>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<section class="hero">
+  <picture>
+    <source type="image/webp" srcset="img/hero-1080.webp 1080w, img/hero-1920.webp 1920w, img/hero-3840.webp 3840w" sizes="100vw">
+    <img src="img/hero-3840.jpg" srcset="img/hero-1080.jpg 1080w, img/hero-1920.jpg 1920w, img/hero-3840.jpg 3840w" sizes="100vw" width="3840" height="2560" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <header class="wrap">
+    <a class="brand" href="/" aria-label="RateWire home"><img src="brand/ratewire-logo-dark.svg" alt="RateWire" width="320" height="120"></a>
+    <a class="hcontact" href="mailto:hello@vdgmanagement.com?subject=RateWire%20enquiry">Contact</a>
+  </header>
+  <main id="main" class="wrap">
+    <div>
+      <p class="kicker">Real-time currency intelligence</p>
+      <h1>Exchange rates, <em>wired</em> for software.</h1>
+      <p class="lead">A real-time FX data API for developers and AI agents. Clean rates, clear sources and predictable latency, rebuilt from the ground up.</p>
+      <div class="notify">
+        <a class="btn" href="mailto:hello@vdgmanagement.com?subject=RateWire%20enquiry">Get in touch <span aria-hidden="true">&rarr;</span></a>
+        <p class="line">Launching soon. For early access or partnerships, write to <a href="mailto:hello@vdgmanagement.com?subject=RateWire%20enquiry">hello@vdgmanagement.com</a></p>
+      </div>
+      <p class="status"><i aria-hidden="true"></i>In development</p>
+    </div>
+    <img class="seal" src="brand/ratewire-seal-dark.svg" alt="" width="460" height="460">
+  </main>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="fl"><img src="brand/ratewire-emblem-dark.svg" alt="" width="40" height="40"><span>&copy; 2026 RateWire. A Vibe Technologies company.</span></div>
+    <nav aria-label="Footer"><a href="mailto:hello@vdgmanagement.com">Contact</a></nav>
+    <span class="credit">Photo: <a href="https://unsplash.com/photos/aerial-view-of-city-buildings-during-night-time-zd8v_Ig3ndg" rel="noopener" target="_blank">Polina Kuzovkova</a> / Unsplash</span>
+  </div>
+</footer>
+</body>
+</html>
